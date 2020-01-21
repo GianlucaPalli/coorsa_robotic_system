@@ -1,0 +1,9 @@
+# Define the goal
+uint32 num_planes
+---
+# Define the result
+shape_msgs/Plane[] planes # plane coefficients
+uint64[] num_points          # points in each plane
+---
+# Define a feedback message
+# Nothing

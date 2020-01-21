@@ -1,0 +1,8 @@
+# Define the goal
+geometry_msgs/Pose box_pose
+---
+# Define the result
+# nothing
+---
+# Define a feedback message
+# Nothing

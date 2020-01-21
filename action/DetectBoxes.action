@@ -1,0 +1,15 @@
+# Define the goal
+geometry_msgs/Vector3 box_dimensions
+float64 plane_vertical_offset
+float64[4] plane_coefficients # nx ny nz d
+---
+# Define the result
+geometry_msgs/Pose[] box_poses
+
+float32 confidence
+---
+# Define a feedback message
+int32 STATE_IDLE = 0
+int32 STATE_PROCESSING = 1
+# ...
+int32 state   # fase algoritmo
