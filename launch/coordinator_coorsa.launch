@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<launch>
+
+    <node name="fake_box_planner" pkg="coorsa_interface" type="fake_box_planner"/>
+    <node name="fake_box_detector" pkg="coorsa_interface" type="fake_box_detector"/>
+    <node name="fake_plane_detector" pkg="coorsa_interface" type="fake_plane_detector"/>
+    <!--node name="coorsa_coordinator" pkg="coorsa_interface" type="coorsa_coordinator_main"/-->
+
+</launch>

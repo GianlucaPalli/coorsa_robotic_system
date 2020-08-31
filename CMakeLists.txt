@@ -22,6 +22,8 @@ find_package(catkin REQUIRED COMPONENTS
   actionlib
   message_generation
   message_runtime
+  coorsa_box_detector_msgs
+  coorsa_o3d3xx_config_msgs
 )
 
 find_package(orocos_kdl REQUIRED)
@@ -58,6 +60,10 @@ generate_messages(
 add_library(coorsa_interface
   src/coorsa_interface/CoorsaCoordinator.cpp
 )
+add_dependencies(coorsa_interface ${PROJECT_NAME}_EXPORTED_TARGETS ${catkin_EXPORTED_TARGETS}
+coorsa_interface_generate_actions_cpp coorsa_interface_generate_messages_cpp coorsa_interface_generate_services_cpp)
+target_link_libraries(coorsa_interface ${catkin_LIBRARIES} ${orocos_kdl_LIBRARIES})
+
 
 #add_executable(task_manager_test src/task_manager_test.cpp)
 #target_link_libraries(task_manager_test ${catkin_LIBRARIES} 
@@ -70,4 +76,15 @@ add_executable(fake_box_detector src/fake_box_detector.cpp)
 target_link_libraries(fake_box_detector ${catkin_LIBRARIES} )
 
 add_executable(fake_box_planner src/fake_box_planner.cpp)
+add_dependencies(fake_box_planner ${PROJECT_NAME}_EXPORTED_TARGETS ${catkin_EXPORTED_TARGETS})
 target_link_libraries(fake_box_planner ${catkin_LIBRARIES} )
+
+add_executable(coorsa_coordinator_main src/coorsa_coordinator_main.cpp)
+target_link_libraries(coorsa_coordinator_main ${catkin_LIBRARIES} coorsa_interface ${orocos_kdl_LIBRARIES})
+
+add_executable(coorsa_pick_action_server src/coorsa_pick_action_server.cpp)
+target_link_libraries(coorsa_pick_action_server ${catkin_LIBRARIES} coorsa_interface)
+
+add_executable(coorsa_test_action_final src/coorsa_test_action_final.cpp)
+add_dependencies(coorsa_test_action_final my_priority_level_generate_actions_cpp ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(coorsa_test_action_final ${catkin_LIBRARIES} ${Boost_LIBRARIES} ${GSTREAMER_LIBRARIES})

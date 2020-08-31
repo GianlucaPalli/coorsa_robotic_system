@@ -1,0 +1,3 @@
+<launch>
+    <node pkg="tf" type="static_transform_publisher" name="gearbox_rf" args="0.0 0.0 0 0 0 0.0 world base_link 10"/>
+</launch>

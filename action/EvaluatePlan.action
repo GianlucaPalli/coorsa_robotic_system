@@ -2,7 +2,7 @@
 geometry_msgs/Pose[] box_poses
 ---
 # Define the result
-int32[] box_order          # picking order based on position in the box vector
+geometry_msgs/Pose[] box_order          # picking order based on position in the box vector
 ---
 # Define a feedback message
 # Nothing
